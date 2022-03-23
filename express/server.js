@@ -51,8 +51,9 @@ router.post('/location', async (req, res) => {
 
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '../public/')));
-app.get('/*', (req, res) =>
-  res.sendFile(path.join(__dirname, '../public/index.html'))
-);
+app.get('/*', function (req, res) {
+  return res.sendFile(path.join(__dirname, '../public/index.html'));
+});
 
-module.exports.handler = serverless(app);
+const exp = (module.exports = app);
+exp.handler = serverless(app);
