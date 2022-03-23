@@ -132,7 +132,7 @@ var App = function App() {
       setCurrentZip(zipCode);
     } else if (!currentZip) {
       // If no zip is provided, look up their zip based on IP
-      fetch('/location', {
+      fetch('/.netlify/functions/server/location', {
         method: 'POST'
       }).then(function (res) {
         return res.json();
@@ -150,7 +150,7 @@ var App = function App() {
 
   (0, _react.useEffect)(function () {
     if (currentZip) {
-      fetch("/weather/".concat(currentZip), {
+      fetch("/.netlify/functions/server/weather/".concat(currentZip), {
         method: 'POST'
       }).then(function (res) {
         return res.json();

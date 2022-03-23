@@ -17,7 +17,7 @@ export const App = () => {
       setCurrentZip(zipCode);
     } else if (!currentZip) {
       // If no zip is provided, look up their zip based on IP
-      fetch('/location', { method: 'POST' })
+      fetch('/.netlify/functions/server/location', { method: 'POST' })
         .then(res => res.json())
         .then(data => {
           const { zip } = data;
@@ -35,7 +35,9 @@ export const App = () => {
   // Load the weather data if we have a new zip code
   useEffect(() => {
     if (currentZip) {
-      fetch(`/weather/${currentZip}`, { method: 'POST' })
+      fetch(`/.netlify/functions/server/weather/${currentZip}`, {
+        method: 'POST',
+      })
         .then(res => res.json())
         .then(data => {
           setWeatherData(data.weather);
