@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 export const WeatherIcon = ({ alt, icon, size }) => (
   <img
-    src={`http://openweathermap.org/img/wn/${icon}${
+    src={`https://openweathermap.org/img/wn/${icon}${
       size ? `@${size}x` : ''
     }.png`}
     alt={alt || ''}

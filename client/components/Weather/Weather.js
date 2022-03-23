@@ -5,6 +5,7 @@ import {
   convertKelvin,
   convertToMph,
   convertUnixTimestamp,
+  degToCompass,
   getRelativeTemp,
 } from '~/utils';
 
@@ -44,7 +45,10 @@ export const Weather = ({ location, useMetric, weatherData }) => {
             <dt>Humidity:</dt>
             <dd>{weatherData.humidity}%</dd>
             <dt>Wind Speed:</dt>
-            <dd>{convertToMph(weatherData.wind_speed, useMetric)}</dd>
+            <dd>
+              {convertToMph(weatherData.wind_speed, useMetric)}{' '}
+              {degToCompass(weatherData.wind_deg)}
+            </dd>
             <dt>Dew Point: </dt>
             <dd>{convertKelvin(weatherData.dew_point, useMetric)}</dd>
           </dl>

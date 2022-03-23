@@ -100,53 +100,6 @@ router.post('/weather/:zip', /*#__PURE__*/function () {
   return function (_x, _x2) {
     return _ref.apply(this, arguments);
   };
-}()); // Find location data from IP address
-
-router.post('/location', /*#__PURE__*/function () {
-  var _ref2 = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee2(req, res) {
-    var apiResponse, json, city, countryCode, region, zip;
-    return _regenerator["default"].wrap(function _callee2$(_context2) {
-      while (1) {
-        switch (_context2.prev = _context2.next) {
-          case 0:
-            _context2.prev = 0;
-            _context2.next = 3;
-            return (0, _nodeFetch["default"])('http://ip-api.com/json');
-
-          case 3:
-            apiResponse = _context2.sent;
-            _context2.next = 6;
-            return apiResponse.json();
-
-          case 6:
-            json = _context2.sent;
-            city = json.city, countryCode = json.countryCode, region = json.region, zip = json.zip;
-            res.json({
-              city: city,
-              countryCode: countryCode,
-              region: region,
-              zip: zip
-            });
-            _context2.next = 15;
-            break;
-
-          case 11:
-            _context2.prev = 11;
-            _context2.t0 = _context2["catch"](0);
-            console.log(_context2.t0);
-            res.status(500).send('Something went wrong');
-
-          case 15:
-          case "end":
-            return _context2.stop();
-        }
-      }
-    }, _callee2, null, [[0, 11]]);
-  }));
-
-  return function (_x3, _x4) {
-    return _ref2.apply(this, arguments);
-  };
 }());
 app.use(_bodyParser["default"].json());
 app.use(_express["default"]["static"](_path["default"].join(__dirname, '/../public/')));

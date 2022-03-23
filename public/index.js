@@ -215,7 +215,8 @@ var _ = require("./..");
 var _utils = require("../../utils");
 
 var Forecast = function Forecast(_ref) {
-  var forecast = _ref.forecast;
+  var forecast = _ref.forecast,
+      useMetric = _ref.useMetric;
   return /*#__PURE__*/_react["default"].createElement("section", {
     className: "Forecast-wrapper"
   }, forecast.map(function (day) {
@@ -239,9 +240,9 @@ var Forecast = function Forecast(_ref) {
       className: "sr-only"
     }, "Temperature"), /*#__PURE__*/_react["default"].createElement("dd", null, /*#__PURE__*/_react["default"].createElement("span", {
       className: "Forecast-max ".concat(maxFeel)
-    }, (0, _utils.convertKelvin)(max)), /*#__PURE__*/_react["default"].createElement("span", {
+    }, (0, _utils.convertKelvin)(max, useMetric)), /*#__PURE__*/_react["default"].createElement("span", {
       className: "Forecast-min ".concat(minFeel)
-    }, (0, _utils.convertKelvin)(min)))), /*#__PURE__*/_react["default"].createElement("div", {
+    }, (0, _utils.convertKelvin)(min, useMetric)))), /*#__PURE__*/_react["default"].createElement("div", {
       className: "Forecast-weather"
     }, /*#__PURE__*/_react["default"].createElement("dt", {
       className: "sr-only"
@@ -256,13 +257,18 @@ var Forecast = function Forecast(_ref) {
       className: "Forecast-iconBlock"
     }, /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
       icon: _freeSolidSvgIcons.faWind
-    }), /*#__PURE__*/_react["default"].createElement("span", null, (0, _utils.convertToMph)(day.wind_speed), ' ', (0, _utils.degToCompass)(day.wind_deg)))))));
+    }), /*#__PURE__*/_react["default"].createElement("span", null, (0, _utils.convertToMph)(day.wind_speed, useMetric), ' ', (0, _utils.degToCompass)(day.wind_deg, useMetric)))))));
   }));
 };
 
 exports.Forecast = Forecast;
 Forecast.propTypes = {
-  forecast: _propTypes["default"].array
+  forecast: _propTypes["default"].array,
+  useMetric: _propTypes["default"].bool
+};
+Forecast.defaultProps = {
+  foreCast: [],
+  useMetric: false
 };
 
 },{"../../utils":12,"./..":9,"@babel/runtime/helpers/interopRequireDefault":20,"@fortawesome/free-solid-svg-icons":27,"@fortawesome/react-fontawesome":28,"prop-types":37,"react":54,"title-case":61}],4:[function(require,module,exports){
@@ -542,7 +548,7 @@ var WeatherIcon = function WeatherIcon(_ref) {
       icon = _ref.icon,
       size = _ref.size;
   return /*#__PURE__*/_react["default"].createElement("img", {
-    src: "http://openweathermap.org/img/wn/".concat(icon).concat(size ? "@".concat(size, "x") : '', ".png"),
+    src: "https://openweathermap.org/img/wn/".concat(icon).concat(size ? "@".concat(size, "x") : '', ".png"),
     alt: alt || ''
   });
 };
@@ -612,7 +618,7 @@ var Weather = function Weather(_ref) {
     className: "".concat(feelColor)
   }, (0, _utils.convertKelvin)(weatherData.feels_like, useMetric)))), /*#__PURE__*/_react["default"].createElement("div", {
     className: "Weather-details"
-  }, /*#__PURE__*/_react["default"].createElement("dl", null, /*#__PURE__*/_react["default"].createElement("dt", null, "Condition:"), /*#__PURE__*/_react["default"].createElement("dd", null, weatherData.weather[0].main), /*#__PURE__*/_react["default"].createElement("dt", null, "Humidity:"), /*#__PURE__*/_react["default"].createElement("dd", null, weatherData.humidity, "%"), /*#__PURE__*/_react["default"].createElement("dt", null, "Wind Speed:"), /*#__PURE__*/_react["default"].createElement("dd", null, (0, _utils.convertToMph)(weatherData.wind_speed, useMetric)), /*#__PURE__*/_react["default"].createElement("dt", null, "Dew Point: "), /*#__PURE__*/_react["default"].createElement("dd", null, (0, _utils.convertKelvin)(weatherData.dew_point, useMetric))))));
+  }, /*#__PURE__*/_react["default"].createElement("dl", null, /*#__PURE__*/_react["default"].createElement("dt", null, "Condition:"), /*#__PURE__*/_react["default"].createElement("dd", null, weatherData.weather[0].main), /*#__PURE__*/_react["default"].createElement("dt", null, "Humidity:"), /*#__PURE__*/_react["default"].createElement("dd", null, weatherData.humidity, "%"), /*#__PURE__*/_react["default"].createElement("dt", null, "Wind Speed:"), /*#__PURE__*/_react["default"].createElement("dd", null, (0, _utils.convertToMph)(weatherData.wind_speed, useMetric), ' ', (0, _utils.degToCompass)(weatherData.wind_deg)), /*#__PURE__*/_react["default"].createElement("dt", null, "Dew Point: "), /*#__PURE__*/_react["default"].createElement("dd", null, (0, _utils.convertKelvin)(weatherData.dew_point, useMetric))))));
 };
 
 exports.Weather = Weather;

@@ -36,19 +36,6 @@ router.post('/weather/:zip', async (req, res) => {
   }
 });
 
-// Find location data from IP address
-router.post('/location', async (req, res) => {
-  try {
-    const apiResponse = await fetch('http://ip-api.com/json');
-    const json = await apiResponse.json();
-    const { city, countryCode, region, zip } = json;
-    res.json({ city, countryCode, region, zip });
-  } catch (err) {
-    console.log(err);
-    res.status(500).send('Something went wrong');
-  }
-});
-
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '/../public/')));
 app.use('/.netlify/functions/server', router); // path must route to lambda

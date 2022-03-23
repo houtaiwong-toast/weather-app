@@ -12,7 +12,7 @@ import {
   getRelativeTemp,
 } from '~/utils';
 
-export const Forecast = ({ forecast }) => {
+export const Forecast = ({ forecast, useMetric }) => {
   return (
     <section className="Forecast-wrapper">
       {forecast.map(day => {
@@ -33,10 +33,10 @@ export const Forecast = ({ forecast }) => {
                   <dt className="sr-only">Temperature</dt>
                   <dd>
                     <span className={`Forecast-max ${maxFeel}`}>
-                      {convertKelvin(max)}
+                      {convertKelvin(max, useMetric)}
                     </span>
                     <span className={`Forecast-min ${minFeel}`}>
-                      {convertKelvin(min)}
+                      {convertKelvin(min, useMetric)}
                     </span>
                   </dd>
                 </div>
@@ -57,8 +57,8 @@ export const Forecast = ({ forecast }) => {
                   <dd className="Forecast-iconBlock">
                     <FontAwesomeIcon icon={faWind} />
                     <span>
-                      {convertToMph(day.wind_speed)}{' '}
-                      {degToCompass(day.wind_deg)}
+                      {convertToMph(day.wind_speed, useMetric)}{' '}
+                      {degToCompass(day.wind_deg, useMetric)}
                     </span>
                   </dd>
                 </div>
@@ -73,4 +73,10 @@ export const Forecast = ({ forecast }) => {
 
 Forecast.propTypes = {
   forecast: PropTypes.array,
+  useMetric: PropTypes.bool,
+};
+
+Forecast.defaultProps = {
+  foreCast: [],
+  useMetric: false,
 };
