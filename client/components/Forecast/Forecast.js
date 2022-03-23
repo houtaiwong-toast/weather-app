@@ -13,7 +13,6 @@ import {
 } from '~/utils';
 
 export const Forecast = ({ forecast }) => {
-  console.log(forecast);
   return (
     <section className="Forecast-wrapper">
       {forecast.map(day => {

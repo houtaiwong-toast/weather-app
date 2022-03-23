@@ -173,7 +173,6 @@ var App = function App() {
       }).then(function (res) {
         return res.json();
       }).then(function (data) {
-        console.log(data);
         setWeatherData(data.weather);
         setLocation(data.location);
         setError(null);
@@ -237,7 +236,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 
 var Forecast = function Forecast(_ref) {
   var forecast = _ref.forecast;
-  console.log(forecast);
   return /*#__PURE__*/_react["default"].createElement("section", {
     className: "Forecast-wrapper"
   }, forecast.map(function (day) {

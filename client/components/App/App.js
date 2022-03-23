@@ -38,7 +38,6 @@ export const App = () => {
       fetch(`/weather/${currentZip}`, { method: 'POST' })
         .then(res => res.json())
         .then(data => {
-          console.log(data);
           setWeatherData(data.weather);
           setLocation(data.location);
           setError(null);
