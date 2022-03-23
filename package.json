@@ -40,7 +40,8 @@
   },
   "scripts": {
     "build": "gulp && yarn transpile && yarn netlify-lambda build dist-server",
-    "start": "gulp && yarn transpile && nodemon server-local.js",
+    "dev": "yarn build && netlify dev",
+    "deploy": "yarn build && git add . && git commit -m \"New production build\" && git push",
     "transpile": "babel ./express --out-dir dist-server"
   }
 }

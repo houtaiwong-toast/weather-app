@@ -36,6 +36,7 @@
       border-radius: vars.$radius 0 0 vars.$radius;
       border-right: 0;
       flex-grow: 1;
+      padding: 0 vars.$spacing--10;
     }
     button {
       background-color: vars.$color--primary;

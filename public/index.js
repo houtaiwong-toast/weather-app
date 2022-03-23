@@ -132,9 +132,7 @@ var App = function App() {
       setCurrentZip(zipCode);
     } else if (!currentZip) {
       // If no zip is provided, look up their zip based on IP
-      fetch('/.netlify/functions/server/location', {
-        method: 'POST'
-      }).then(function (res) {
+      fetch('http://ip-api.com/json').then(function (res) {
         return res.json();
       }).then(function (data) {
         var zip = data.zip;
@@ -328,7 +326,8 @@ var Header = function Header(_ref) {
     className: "Header-inputWrap"
   }, /*#__PURE__*/_react["default"].createElement("input", {
     type: "text",
-    onChange: handleInput
+    onChange: handleInput,
+    placeholder: "Search by ZIP"
   }), /*#__PURE__*/_react["default"].createElement("button", {
     type: "submit"
   }, "Search")), /*#__PURE__*/_react["default"].createElement("div", {
@@ -837,6 +836,7 @@ exports.convertUnixTimestamp = void 0;
 var convertUnixTimestamp = function convertUnixTimestamp(unixTimestamp) {
   var date = new Date(unixTimestamp * 1000);
   var hours = date.getHours();
+  var minutes = date.getMinutes();
   var ampm = 'AM';
 
   if (hours > 12) {
@@ -844,9 +844,10 @@ var convertUnixTimestamp = function convertUnixTimestamp(unixTimestamp) {
     ampm = 'PM';
   }
 
+  minutes = minutes < 10 ? "0".concat(minutes) : minutes;
   return {
     date: date.toDateString(),
-    time: "".concat(hours, ":").concat(date.getMinutes(), " ").concat(ampm)
+    time: "".concat(hours, ":").concat(minutes, " ").concat(ampm)
   };
 };
 

@@ -30,7 +30,11 @@ export const Header = ({
           </div>
         </div>
         <form onSubmit={handleSubmit} className="Header-inputWrap">
-          <input type="text" onChange={handleInput} />
+          <input
+            type="text"
+            onChange={handleInput}
+            placeholder="Search by ZIP"
+          />
           <button type="submit">Search</button>
         </form>
         <div className="Header-tempToggleWrap">
