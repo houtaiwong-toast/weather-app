@@ -5,6 +5,7 @@
   color: white;
   position: sticky;
   top: 0;
+  z-index: 1;
   &-content {
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
@@ -58,7 +59,7 @@
     justify-content: flex-end;
     button {
       background-color: rgba(vars.$color--primary, 0.5);
-      color: vars.$color-gray--20;
+      color: vars.$color-gray--30;
       cursor: pointer;
       padding: vars.$spacing--10 vars.$spacing--15;
       transition: background-color linear 0.2s, color linear 0.2s;

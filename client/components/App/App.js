@@ -73,7 +73,7 @@ export const App = () => {
                 weatherData={currentWeather}
               />
               <Forecast
-                forecast={weatherData?.forecast}
+                forecast={weatherData?.daily}
                 useMetric={useMetric}
               />
             </>

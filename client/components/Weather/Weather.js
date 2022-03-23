@@ -9,12 +9,11 @@ import {
 } from '~/utils';
 
 export const Weather = ({ location, useMetric, weatherData }) => {
-  console.log(weatherData);
   const tempColor = getRelativeTemp(weatherData.temp);
   const feelColor = getRelativeTemp(weatherData.feels_like);
 
-  const sunrise = convertUnixTimestamp(weatherData.sunrise);
-  const sunset = convertUnixTimestamp(weatherData.sunset);
+  const { time: sunrise } = convertUnixTimestamp(weatherData.sunrise);
+  const { time: sunset } = convertUnixTimestamp(weatherData.sunset);
 
   return (
     <section className="Weather">

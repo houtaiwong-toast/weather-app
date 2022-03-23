@@ -1,11 +1,6 @@
 @use '../../utils/scss/vars';
 
 .App {
-  &,
-  &-main,
-  &-content {
-    height: 100%;
-  }
   &-main {
     background-color: vars.$color--secondary;
   }
@@ -13,7 +8,6 @@
     background-color: white;
     border: solid vars.$color--tertiary;
     border-width: 0 1px;
-    height: 100%;
     margin: 0 auto;
     max-width: vars.$bp--30;
     padding: vars.$spacing--20;

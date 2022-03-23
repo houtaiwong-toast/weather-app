@@ -1,7 +1,5 @@
 @use '../../utils/scss/vars';
 
-$tempFeel: 'cold', 'nice', 'warm';
-
 .Weather {
   &-location {
     font-size: vars.$font-size--40;
@@ -14,6 +12,14 @@ $tempFeel: 'cold', 'nice', 'warm';
     justify-content: center;
     p:first-child {
       margin-right: vars.$spacing--40;
+    }
+    @media screen and (max-width: vars.$bp--25) {
+      display: block;
+      text-align: center;
+      margin-bottom: vars.$spacing--10;
+      p:first-child {
+        margin: 0 0 vars.$spacing--5;
+      }
     }
   }
   &-content {
@@ -34,11 +40,16 @@ $tempFeel: 'cold', 'nice', 'warm';
     }
   }
   &-temp {
-    font-size: 5rem;
+    font-size: vars.$font-size--100;
+    @media screen and (max-width: vars.$bp--25) {
+      font-size: vars.$font-size--70;
+    }
   }
-  @each $feel in $tempFeel {
-    .#{$feel} {
-      color: map-get(vars.$color-temp, #{$feel});
+  &-iconWrap {
+    @media screen and (max-width: vars.$bp--25) {
+      img {
+        width: 100%;
+      }
     }
   }
   &-details {
@@ -58,12 +69,20 @@ $tempFeel: 'cold', 'nice', 'warm';
       dt,
       dd {
         flex-grow: 1;
-        margin-bottom: vars.$spacing--5;
-        padding: 0 vars.$spacing--40;
+        padding: vars.$spacing--5 vars.$spacing--40;
         width: 50%;
+        border: 1px solid vars.$color-gray--10;
+      }
+      dd {
+        &:nth-child(4n + 2) {
+          background-color: vars.$color-gray--10;
+        }
       }
       dt {
         text-align: right;
+        &:nth-child(4n + 1) {
+          background-color: vars.$color-gray--10;
+        }
       }
     }
   }

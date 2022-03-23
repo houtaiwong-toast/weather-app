@@ -7,5 +7,8 @@ export const convertUnixTimestamp = unixTimestamp => {
     ampm = 'PM';
   }
 
-  return `${hours}:${date.getMinutes()} ${ampm}`;
+  return {
+    date: date.toDateString(),
+    time: `${hours}:${date.getMinutes()} ${ampm}`,
+  };
 };
