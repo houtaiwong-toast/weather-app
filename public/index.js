@@ -167,8 +167,7 @@ var App = function App() {
     className: "App"
   }, /*#__PURE__*/_react["default"].createElement(_.Header, {
     alerts: weatherData === null || weatherData === void 0 ? void 0 : weatherData.alerts,
-    currentWeather: currentWeather,
-    location: location || currentZip,
+    currentZip: currentZip,
     setCurrentZip: setCurrentZip,
     setUseMetric: setUseMetric,
     useMetric: useMetric
@@ -297,6 +296,7 @@ function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && 
 
 var Header = function Header(_ref) {
   var alerts = _ref.alerts,
+      currentZip = _ref.currentZip,
       setCurrentZip = _ref.setCurrentZip,
       setUseMetric = _ref.setUseMetric,
       useMetric = _ref.useMetric;
@@ -305,6 +305,13 @@ var Header = function Header(_ref) {
       _useState2 = (0, _slicedToArray2["default"])(_useState, 2),
       inputText = _useState2[0],
       setInputText = _useState2[1];
+
+  (0, _react.useEffect)(function () {
+    // Set the input to display the current zip code if one exists
+    if (currentZip) {
+      setInputText(currentZip);
+    }
+  }, [currentZip]);
 
   var handleInput = function handleInput(e) {
     setInputText(e.target.value);
@@ -329,12 +336,18 @@ var Header = function Header(_ref) {
     className: "Header-logo"
   }, /*#__PURE__*/_react["default"].createElement(_.Sun, null))), /*#__PURE__*/_react["default"].createElement("form", {
     onSubmit: handleSubmit,
+    className: "Header-form"
+  }, /*#__PURE__*/_react["default"].createElement("div", {
     className: "Header-inputWrap"
-  }, /*#__PURE__*/_react["default"].createElement("input", {
+  }, /*#__PURE__*/_react["default"].createElement("label", {
+    htmlFor: "zip-input"
+  }, "Enter Zip:"), /*#__PURE__*/_react["default"].createElement("input", {
     type: "text",
     onChange: handleInput,
-    placeholder: "Search by ZIP"
-  }), /*#__PURE__*/_react["default"].createElement("button", {
+    placeholder: "Search by ZIP",
+    id: "zip-input",
+    value: inputText
+  })), /*#__PURE__*/_react["default"].createElement("button", {
     type: "submit"
   }, "Search")), /*#__PURE__*/_react["default"].createElement("div", {
     className: "Header-tempToggleWrap"
@@ -361,16 +374,14 @@ var Header = function Header(_ref) {
 exports.Header = Header;
 Header.propTypes = {
   alerts: _propTypes["default"].array,
-  currentWeather: _propTypes["default"].object,
-  location: _propTypes["default"].string,
+  currentZip: _propTypes["default"].string,
   setCurrentZip: _propTypes["default"].func.isRequired,
   setUseMetric: _propTypes["default"].func.isRequired,
   useMetric: _propTypes["default"].bool.isRequired
 };
 Header.defaultProps = {
   alerts: [],
-  currentWeather: {},
-  location: null
+  currentZip: null
 };
 
 },{"./..":9,"@babel/runtime/helpers/interopRequireDefault":20,"@babel/runtime/helpers/slicedToArray":23,"@babel/runtime/helpers/typeof":24,"prop-types":37,"react":54}],5:[function(require,module,exports){

@@ -1,14 +1,22 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Alert, Sun } from '~/components';
 
 export const Header = ({
   alerts,
+  currentZip,
   setCurrentZip,
   setUseMetric,
   useMetric,
 }) => {
   const [inputText, setInputText] = useState('');
+
+  useEffect(() => {
+    // Set the input to display the current zip code if one exists
+    if (currentZip) {
+      setInputText(currentZip);
+    }
+  }, [currentZip]);
 
   const handleInput = e => {
     setInputText(e.target.value);
@@ -29,12 +37,17 @@ export const Header = ({
             <Sun />
           </div>
         </div>
-        <form onSubmit={handleSubmit} className="Header-inputWrap">
-          <input
-            type="text"
-            onChange={handleInput}
-            placeholder="Search by ZIP"
-          />
+        <form onSubmit={handleSubmit} className="Header-form">
+          <div className="Header-inputWrap">
+            <label htmlFor="zip-input">Enter Zip:</label>
+            <input
+              type="text"
+              onChange={handleInput}
+              placeholder="Search by ZIP"
+              id="zip-input"
+              value={inputText}
+            />
+          </div>
           <button type="submit">Search</button>
         </form>
         <div className="Header-tempToggleWrap">
@@ -70,8 +83,7 @@ export const Header = ({
 
 Header.propTypes = {
   alerts: PropTypes.array,
-  currentWeather: PropTypes.object,
-  location: PropTypes.string,
+  currentZip: PropTypes.string,
   setCurrentZip: PropTypes.func.isRequired,
   setUseMetric: PropTypes.func.isRequired,
   useMetric: PropTypes.bool.isRequired,
@@ -79,6 +91,5 @@ Header.propTypes = {
 
 Header.defaultProps = {
   alerts: [],
-  currentWeather: {},
-  location: null,
+  currentZip: null,
 };

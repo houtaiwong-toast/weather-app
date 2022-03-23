@@ -57,8 +57,7 @@ export const App = () => {
     <div className="App">
       <Header
         alerts={weatherData?.alerts}
-        currentWeather={currentWeather}
-        location={location || currentZip}
+        currentZip={currentZip}
         setCurrentZip={setCurrentZip}
         setUseMetric={setUseMetric}
         useMetric={useMetric}

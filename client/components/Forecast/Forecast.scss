@@ -26,7 +26,6 @@
     @media screen and (max-width: vars.$bp--20) {
       dt,
       dd {
-        padding: vars.$spacing--10;
         text-align: center;
         width: 100%;
         .Forecast-iconBlock {
@@ -44,13 +43,19 @@
   }
   &-max,
   &-min {
-    @media screen and (max-width: vars.$bp--25) {
+    @media screen and (max-width: vars.$bp--40) {
       display: block;
       margin: vars.$spacing--5;
     }
   }
   &-weather {
     padding-right: vars.$spacing--10;
+    @media screen and (max-width: vars.$bp--20) {
+      // The openweather images have a bunch of whitespace around them
+      // The set height and negative margin will help hide some of it to the user
+      height: 100px;
+      margin-top: -#{vars.$spacing--30};
+    }
   }
   &-iconBlock {
     display: flex;
