@@ -55,7 +55,4 @@ app.get('/*', (req, res) =>
   res.sendFile(path.join(__dirname, '../public/index.html'))
 );
 
-const handler = serverless(app);
-
-export default app;
-export { handler };
+module.exports.handler = serverless(app);
