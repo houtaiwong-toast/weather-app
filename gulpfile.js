@@ -14,7 +14,7 @@ const paths = {
   clientApp: 'client/index.js',
   scss: 'client/**/*.scss',
   clientJS: 'client/**/*.js',
-  serverJS: 'server/server.js',
+  serverJS: 'express/server.js',
 };
 
 // Lint JS
@@ -26,11 +26,11 @@ const lintJS = () =>
 
 // Compile & Minify JS
 const compileJS = () =>
-  browserify([paths.clientApp, paths.serverJS])
+  browserify(paths.clientApp)
     .transform(babelify) //———–> transpiles es6 to es5
     .bundle()
     .pipe(source('index.js'))
-    .pipe(gulp.dest('./'));
+    .pipe(gulp.dest('./public/'));
 
 // Compile Sass
 const compileCSS = () =>
@@ -42,7 +42,7 @@ const compileCSS = () =>
         .on('error', sass.logError)
     )
     .pipe(concat('index.css'))
-    .pipe(gulp.dest('./'));
+    .pipe(gulp.dest('./public/'));
 
 const watchDev = () => {
   // Watch CSS & JS
@@ -50,7 +50,7 @@ const watchDev = () => {
   gulp.watch(paths.clientJS, gulp.series(lintJS, compileJS));
 
   // Start the app server
-  const server = gls('server/server.js', { stdio: 'inherit' });
+  const server = gls('express/server.js', { stdio: 'inherit' });
   server.start();
 
   // // Reload server when backend files change
