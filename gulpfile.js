@@ -53,15 +53,15 @@ const watchDev = () => {
   const server = gls('server/server.js', { stdio: 'inherit' });
   server.start();
 
-  // Reload server when backend files change
-  gulp.watch(paths.serverJS, () => {
-    server.start.bind(server);
-  });
+  // // Reload server when backend files change
+  // gulp.watch(paths.serverJS, () => {
+  //   server.start.bind(server);
+  // });
 
-  // Notify server when frontend files change
-  gulp.watch(['/**/*.{css,js,html}'], file => {
-    server.notify(file);
-  });
+  // // Notify server when frontend files change
+  // gulp.watch(['/**/*.{css,js,html}'], file => {
+  //   server.notify(file);
+  // });
 };
 
 exports.watch = gulp.series(lintJS, compileJS, compileCSS, watchDev);

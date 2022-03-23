@@ -1,14 +1,15 @@
 const express = require('express');
 const path = require('path');
 const fetch = require('node-fetch');
+const serverless = require('serverless-http');
 
 require('dotenv').config({ path: __dirname + '/./../.env' });
 
 const app = express();
 
-app.use(express.static(path.join(__dirname, '/../static')));
+app.use(express.static(path.join(__dirname, '/../')));
 app.get('/*', (req, res) =>
-  res.sendFile(path.join(__dirname, '/../static', 'index.html'))
+  res.sendFile(path.join(__dirname, '/../', 'index.html'))
 );
 
 app.post('/weather/:zip', async (req, res) => {
@@ -54,3 +55,5 @@ app.post('/location', async (req, res) => {
 app.listen(3000, () => {
   console.log(`Server started listening on 3000`);
 });
+
+module.exports.handler = serverless(app);
