@@ -152,9 +152,6 @@ app.use(_bodyParser["default"].json());
 app.use(_express["default"]["static"](_path["default"].join(__dirname, '/../public/')));
 app.use('/.netlify/functions/server', router); // path must route to lambda
 
-app.get('/*', function (req, res) {
-  return res.sendFile('index.html', './../public/');
-});
 var handler = (0, _serverlessHttp["default"])(app);
 exports.handler = handler;
 var _default = app;

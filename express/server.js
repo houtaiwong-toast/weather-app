@@ -52,9 +52,6 @@ router.post('/location', async (req, res) => {
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '/../public/')));
 app.use('/.netlify/functions/server', router); // path must route to lambda
-app.get('/*', (req, res) =>
-  res.sendFile('index.html', './../public/')
-);
 
 export const handler = serverless(app);
 export default app;
