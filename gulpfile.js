@@ -14,7 +14,7 @@ const paths = {
   clientApp: 'client/index.js',
   scss: 'client/**/*.scss',
   clientJS: 'client/**/*.js',
-  serverJS: 'server/*.js',
+  serverJS: 'server/server.js',
 };
 
 // Lint JS
@@ -26,11 +26,11 @@ const lintJS = () =>
 
 // Compile & Minify JS
 const compileJS = () =>
-  browserify(paths.clientApp)
+  browserify([paths.clientApp, paths.serverJS])
     .transform(babelify) //———–> transpiles es6 to es5
     .bundle()
     .pipe(source('bundle.js'))
-    .pipe(gulp.dest('static/js'));
+    .pipe(gulp.dest('./'));
 
 // Compile Sass
 const compileCSS = () =>
@@ -42,7 +42,7 @@ const compileCSS = () =>
         .on('error', sass.logError)
     )
     .pipe(concat('main.css'))
-    .pipe(gulp.dest('static/css'));
+    .pipe(gulp.dest('./'));
 
 const watchDev = () => {
   // Watch CSS & JS
@@ -59,7 +59,7 @@ const watchDev = () => {
   });
 
   // Notify server when frontend files change
-  gulp.watch(['static/**/*.{css,js,html}'], file => {
+  gulp.watch(['/**/*.{css,js,html}'], file => {
     server.notify(file);
   });
 };
