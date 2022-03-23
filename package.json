@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@babel/cli": "^7.17.6",
     "@fortawesome/fontawesome-free": "^6.1.1",
     "@fortawesome/fontawesome-svg-core": "^6.1.1",
     "@fortawesome/free-solid-svg-icons": "^6.1.1",
@@ -38,7 +39,8 @@
     "vinyl-source-stream": "^2.0.0"
   },
   "scripts": {
-    "build": "gulp && yarn netlify-lambda build express",
-    "start": "gulp && nodemon server-local.js"
+    "build": "gulp && yarn transpile && yarn netlify-lambda build dist-server",
+    "start": "gulp && yarn transpile && nodemon server-local.js",
+    "transpile": "babel ./express --out-dir dist-server"
   }
 }

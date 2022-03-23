@@ -1,10 +1,11 @@
-const express = require('express');
-const path = require('path');
-const fetch = require('node-fetch');
-const serverless = require('serverless-http');
-const bodyParser = require('body-parser');
+import express from 'express';
+import path from 'path';
+import fetch from 'node-fetch';
+import serverless from 'serverless-http';
+import bodyParser from 'body-parser';
+import dotenv from 'dotenv';
 
-require('dotenv').config({ path: __dirname + '/./../.env' });
+dotenv.config({ path: __dirname + '/./../.env' });
 
 const app = express();
 const router = express.Router();
@@ -55,7 +56,5 @@ app.get('/*', function (req, res) {
   return res.sendFile(path.join(__dirname, '../public/index.html'));
 });
 
-module.exports = {
-  default: app,
-  handler: serverless(app),
-};
+export const handler = serverless(app);
+export default app;

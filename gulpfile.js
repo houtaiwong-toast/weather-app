@@ -50,7 +50,7 @@ const watchDev = () => {
   gulp.watch(paths.clientJS, gulp.series(lintJS, compileJS));
 
   // Start the app server
-  const server = gls('express/server.js', { stdio: 'inherit' });
+  const server = gls('dist-server/server.js', { stdio: 'inherit' });
   server.start();
 
   // // Reload server when backend files change
