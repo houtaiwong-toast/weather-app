@@ -17,7 +17,7 @@ export const App = () => {
       setCurrentZip(zipCode);
     } else if (!currentZip) {
       // If no zip is provided, look up their zip based on IP
-      fetch('http://ip-api.com/json')
+      fetch('https://ipapi.co/json')
         .then(res => res.json())
         .then(data => {
           const { zip } = data;

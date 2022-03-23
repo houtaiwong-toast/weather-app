@@ -132,7 +132,7 @@ var App = function App() {
       setCurrentZip(zipCode);
     } else if (!currentZip) {
       // If no zip is provided, look up their zip based on IP
-      fetch('http://ip-api.com/json').then(function (res) {
+      fetch('https://ipapi.co/json').then(function (res) {
         return res.json();
       }).then(function (data) {
         var zip = data.zip;
