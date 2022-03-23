@@ -14,9 +14,8 @@ router.post('/weather/:zip', async (req, res) => {
   const { zip } = req.params;
   try {
     // Get location data from zip code
-    const location = await fetch(
-      `${process.env.MAPS_API}?address=${zip}&key=${process.env.MAPS_API_KEY}`
-    );
+    const mapsApi = `${process.env.MAPS_API}?address=${zip}&key=${process.env.MAPS_API_KEY}`;
+    const location = await fetch(mapsApi);
     const locationJson = await location.json();
     const { formatted_address } = locationJson.results[0];
     // Get latitude & longitude by zip code
@@ -52,8 +51,9 @@ router.post('/location', async (req, res) => {
 
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '/../public/')));
+app.use('/.netlify/functions/server', router); // path must route to lambda
 app.get('/*', (req, res) =>
-  res.sendFile(path.join(__dirname, '/../public/', 'index.html'))
+  res.sendFile('index.html', './../public/')
 );
 
 export const handler = serverless(app);
