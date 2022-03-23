@@ -29,7 +29,7 @@ const compileJS = () =>
   browserify([paths.clientApp, paths.serverJS])
     .transform(babelify) //———–> transpiles es6 to es5
     .bundle()
-    .pipe(source('bundle.js'))
+    .pipe(source('index.js'))
     .pipe(gulp.dest('./'));
 
 // Compile Sass
@@ -41,7 +41,7 @@ const compileCSS = () =>
         .sync({ outputStyle: 'compressed' })
         .on('error', sass.logError)
     )
-    .pipe(concat('main.css'))
+    .pipe(concat('index.css'))
     .pipe(gulp.dest('./'));
 
 const watchDev = () => {
