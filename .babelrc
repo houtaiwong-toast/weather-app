@@ -10,6 +10,7 @@
         "rootPathPrefix": "~",
         "rootPathSuffix": "client"
       }
-    ]
-  ],
+    ],
+    "@babel/plugin-transform-runtime"
+  ]
 }
