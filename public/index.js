@@ -135,9 +135,9 @@ var App = function App() {
       fetch('https://ipapi.co/json').then(function (res) {
         return res.json();
       }).then(function (data) {
-        var zip = data.zip;
+        var postal = data.postal;
         setError(null);
-        setCurrentZip(zip);
+        setCurrentZip(postal);
       })["catch"](function (err) {
         console.log(err); // Not using setError to store the message here
         // We don't want an error with the zip lookup to block the page

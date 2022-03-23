@@ -20,9 +20,9 @@ export const App = () => {
       fetch('https://ipapi.co/json')
         .then(res => res.json())
         .then(data => {
-          const { zip } = data;
+          const { postal } = data;
           setError(null);
-          setCurrentZip(zip);
+          setCurrentZip(postal);
         })
         .catch(err => {
           console.log(err);
