@@ -147,9 +147,9 @@ router.post('/location', /*#__PURE__*/function () {
   };
 }());
 app.use(_bodyParser["default"].json());
-app.use(_express["default"]["static"](_path["default"].join(__dirname, '../public/')));
+app.use(_express["default"]["static"](_path["default"].join(__dirname, '/../public/')));
 app.get('/*', function (req, res) {
-  return res.sendFile(_path["default"].join(__dirname, '../public/index.html'));
+  return res.sendFile(_path["default"].join(__dirname, '/../public/', 'index.html'));
 });
 var handler = (0, _serverlessHttp["default"])(app);
 exports.handler = handler;
