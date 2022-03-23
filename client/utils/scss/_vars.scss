@@ -1,11 +1,42 @@
+// Colors
+$color-gray--10: #f1efef;
+$color-gray--20: #7c7c7c;
+$color-gray--30: #383d3b;
+$color--alert: #d9451c;
+$color--primary: #3198c1;
+$color--secondary: #055d80;
+$color--tertiary: #202639;
+$color--accent: #756a7a;
+$color--black: #111211;
+
+$color-temp: (
+  cold: $color--primary,
+  nice: #1e693a,
+  warm: $color--alert,
+);
+
+// Fonts
+$font-size--5: 0.813rem;
+$font-size--10: 1rem;
+$font-size--20: 1.25rem;
+$font-size--30: 1.5rem;
+$font-size--40: 1.75rem;
+$font-size--50: 2rem;
+
 // Spacing
+$spacing--5: 0.25rem;
 $spacing--10: 0.5rem;
+$spacing--15: 0.75rem;
 $spacing--20: 1rem;
 $spacing--30: 1.5rem;
 $spacing--40: 2rem;
+$spacing--50: 2.5rem;
 
 // Breakpoints
-$bp--10: 480px;
-$bp--30: 780px;
-$bp--50: 1024px;
-$bp--60: 1200px;
+$bp--10: 360px;
+$bp--20: 480px;
+$bp--25: 800px;
+$bp--30: 1024px;
+
+// Misc
+$radius: 0.25rem;

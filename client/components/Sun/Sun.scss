@@ -1,0 +1,59 @@
+// Credit: https://codepen.io/thebabydino/pen/dvEEqO
+$t: 2s;
+$sw: 10px;
+$a: 30deg;
+svg {
+  flex: 1;
+  fill: none;
+  stroke: white;
+  stroke-width: $sw;
+  stroke-linecap: round;
+}
+
+mask {
+  :nth-child(odd) {
+    fill: white;
+  }
+
+  :nth-child(2n) {
+    fill: black;
+    stroke: black;
+    stroke-width: calc(2 * $sw);
+  }
+}
+
+[id='sun'] {
+  --i: -2;
+  mask: url(#m);
+}
+
+.osc,
+line {
+  animation: osc $t ease-in-out infinite alternate;
+}
+
+line {
+  animation-name: exp;
+}
+
+[id='rays'] {
+  animation: rot $t linear infinite;
+}
+
+@keyframes osc {
+  to {
+    transform: translatey(calc(var(--i, 1) * $sw));
+  }
+}
+
+@keyframes rot {
+  to {
+    transform: rotate(30deg);
+  }
+}
+
+@keyframes exp {
+  to {
+    transform: scalex(1.5);
+  }
+}

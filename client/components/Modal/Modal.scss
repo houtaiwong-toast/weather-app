@@ -1,0 +1,29 @@
+@use '../../utils/scss/vars';
+
+.Modal {
+  background: white;
+  border: 2px solid vars.$color--tertiary;
+  color: vars.$color--black;
+  cursor: initial;
+  margin: auto;
+  max-width: vars.$bp--10;
+  padding: vars.$spacing--40;
+  width: 100%;
+  z-index: 1;
+  &-veil {
+    background: rgba(vars.$color--black, 0.2);
+    bottom: 0;
+    cursor: pointer;
+    display: flex;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+  }
+  &-title {
+    margin-bottom: vars.$spacing--10;
+  }
+  &-subtitle {
+    margin-bottom: vars.$spacing--20;
+  }
+}

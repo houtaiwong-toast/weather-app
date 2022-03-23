@@ -1,0 +1,26 @@
+@use '../../utils/scss/vars';
+
+.Alert {
+  background-color: vars.$color-gray--10;
+  border-bottom: 2px solid vars.$color--tertiary;
+  margin: auto;
+  text-align: center;
+  width: 100%;
+  &-button,
+  &-text {
+    color: vars.$color--alert;
+    font-weight: bold;
+    max-width: vars.$bp--30;
+    overflow: hidden;
+    margin: 0 auto;
+    padding: vars.$spacing--10 vars.$spacing--20
+      calc(vars.$spacing--10 - 2px);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+  }
+  &-button {
+    cursor: pointer;
+    display: block;
+  }
+}

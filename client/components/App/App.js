@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Header, Weather } from '~/components';
+import { Forecast, Header, Weather } from '~/components';
 
 export const App = () => {
   const [currentZip, setCurrentZip] = useState(null);
   const [error, setError] = useState(null);
   const [location, setLocation] = useState(null);
+  const [useMetric, setUseMetric] = useState(false);
   const [weatherData, setWeatherData] = useState(null);
   const { zipCode } = useParams();
 
@@ -19,9 +20,8 @@ export const App = () => {
       fetch('/location', { method: 'POST' })
         .then(res => res.json())
         .then(data => {
-          const { city, countryCode, region, zip } = data;
+          const { zip } = data;
           setError(null);
-          setLocation(`${city}, ${region} ${countryCode}`);
           setCurrentZip(zip);
         })
         .catch(err => {
@@ -34,11 +34,13 @@ export const App = () => {
 
   // Load the weather data if we have a new zip code
   useEffect(() => {
-    if (currentZip && !weatherData) {
+    if (currentZip) {
       fetch(`/weather/${currentZip}`, { method: 'POST' })
         .then(res => res.json())
         .then(data => {
-          setWeatherData(data);
+          console.log(data);
+          setWeatherData(data.weather);
+          setLocation(data.location);
           setError(null);
         })
         .catch(err => {
@@ -48,14 +50,36 @@ export const App = () => {
     }
   }, [currentZip]);
 
+  const currentWeather = weatherData?.current;
+
   return (
     <div className="App">
-      <Header location={location} zip={currentZip} />
-      {error ? (
-        <p className="App-error">Error - {error}</p>
-      ) : (
-        <Weather weatherData={weatherData} />
-      )}
+      <Header
+        alerts={weatherData?.alerts}
+        currentWeather={currentWeather}
+        location={location || currentZip}
+        setCurrentZip={setCurrentZip}
+        setUseMetric={setUseMetric}
+        useMetric={useMetric}
+      />
+      <main className="App-main">
+        <div className="App-content">
+          {error && <p className="App-error">Error - {error}</p>}
+          {!error && weatherData && (
+            <>
+              <Weather
+                location={location || currentZip}
+                useMetric={useMetric}
+                weatherData={currentWeather}
+              />
+              <Forecast
+                forecast={weatherData?.forecast}
+                useMetric={useMetric}
+              />
+            </>
+          )}
+        </div>
+      </main>
     </div>
   );
 };
