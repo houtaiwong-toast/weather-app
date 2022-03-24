@@ -72,9 +72,10 @@
         flex-grow: 1;
         padding: vars.$spacing--5 vars.$spacing--40;
         width: 50%;
-        border: 1px solid vars.$color-gray--10;
+        border: 2px solid vars.$color-gray--10;
       }
       dd {
+        border-left: 0;
         &:nth-child(4n + 2) {
           background-color: vars.$color-gray--10;
         }
