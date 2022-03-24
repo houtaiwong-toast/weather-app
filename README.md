@@ -8,17 +8,21 @@
 * Deployed via Netlify: https://sleach-weather.netlify.app/
 * Loads user's location by IP on page load
 * Can also use a `/<zip>` route to load any location via url (ex: https://sleach-weather.netlify.app/02116)
+* Displays city, state, and country for the selected location
 * Able to toggle between metric & imperial units
 * Responsive
 
 ## Tech
 ### API
 * Node & Express server
-* Uses `serverless-http` to translate Express server to lambda functions for better support on Netlify
+* Uses `serverless-http` and `netlify-lambda` to translate Express server to lambda functions for better support on Netlify
+* Fetches weather data from https://openweathermap.org/ public API
+* Fetches location data (city, state, country) using Google Maps API
 ### UI
 * React
 * React Router
 * Sass
+* Fetches user location by IP via https://ipapi.co/
 ### General
 * Gulp:
   * Linting (eslint)
