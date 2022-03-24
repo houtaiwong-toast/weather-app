@@ -9,6 +9,7 @@
 * Loads user's location by IP on page load
 * Can also use a `/<zip>` route to load any location via url (ex: https://sleach-weather.netlify.app/02116)
 * Displays city, state, and country for the selected location
+* Displays current weather alerts, if any are in effect
 * Able to toggle between metric & imperial units
 * Responsive
 
