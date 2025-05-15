@@ -51,8 +51,6 @@ export const App = () => {
     }
   }, [currentZip]);
 
-  const currentWeather = weatherData?.current;
-
   return (
     <div className="App">
       <Header
@@ -70,10 +68,10 @@ export const App = () => {
               <Weather
                 location={location || currentZip}
                 useMetric={useMetric}
-                weatherData={currentWeather}
+                weatherData={weatherData}
               />
               <Forecast
-                forecast={weatherData?.daily}
+                forecast={weatherData}
                 useMetric={useMetric}
               />
             </>

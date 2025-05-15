@@ -112,4 +112,11 @@
       }
     }
   }
+  &-error {
+    color: #ff4444;
+    font-size: vars.$font-size--5;
+    margin-top: vars.$spacing--5;
+    text-align: center;
+    grid-column: 1 / -1;
+  }
 }

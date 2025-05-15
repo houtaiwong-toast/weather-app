@@ -1,0 +1,126 @@
+# Weather App Technical Interview
+
+## Overview
+This technical interview will assess your ability to identify and solve real-world problems in a React-based weather application. The application displays current weather conditions and forecasts, allows users to search by ZIP code, and supports both metric and imperial units.
+
+## Technical Challenges
+
+### 1. Null Checks and Error Handling
+**Task:** Identify and fix issues related to null checks and error handling in the application.
+
+**Key Areas to Focus On:**
+- The `Weather` component has a null check after using `weatherData` properties
+- The `getRelativeTemp` utility has a bug in its temperature range check
+- The `Forecast` component doesn't handle an undefined variable
+
+**Optional Questions**
+- The `Header` component's ZIP code validation could be improved, how would you improve it?
+
+**Questions to Consider:**
+- How would you improve the error handling in these components?
+- What edge cases should be considered?
+- How would you implement proper type checking?
+
+### 2. Async Operations and Race Conditions
+**Task:** Improve the handling of asynchronous operations and prevent race conditions.
+
+**Key Areas to Focus On:**
+- Weather data fetching in `App.js`
+- IP-based location detection
+- Server-side weather API calls
+- Data fetching optimization
+
+**Questions to Consider:**
+- How would you handle multiple rapid ZIP code searches?
+- What's the best way to implement timeout mechanisms?
+- How would you implement retry logic for failed API calls?
+- What caching strategy would you use?
+
+### 3. Performance Optimization
+**Task:** Identify and fix performance issues in the application.
+
+**Key Areas to Focus On:**
+- Weather icon loading and optimization
+- `WMO.json` file optimization
+- Data caching implementation
+- Loading states and skeleton screens
+
+**Questions to Consider:**
+- How would you optimize the loading of weather icons?
+- What strategies would you use to reduce layout shifts?
+- How would you implement proper caching?
+- What loading states would you add to improve user experience?
+- What tools would you use to locate nonperformant areas of the app? 
+
+### 4. State Management and Data Flow
+**Task:** Improve the application's state management and data flow architecture.
+
+**Key Areas to Focus On:**
+- Current prop drilling in components
+- State management between components
+- Data flow optimization
+- State persistence
+
+**Questions to Consider:**
+- How would you refactor the current prop drilling in the application?
+- What state management solution would you implement and why?
+- How would you handle state persistence between page refreshes?
+- How would you implement optimistic updates for better UX?
+
+### 5. API and Backend Optimization
+**Task:** Enhance the backend architecture and API design.
+
+**Key Areas to Focus On:**
+- API rate limiting
+- API response optimization
+- Error handling middleware
+- API documentation
+- Backend caching strategy
+
+**Questions to Consider:**
+- How would you implement proper API rate limiting?
+- What strategies would you use to optimize API responses?
+- How would you implement a robust error handling middleware?
+- What caching strategy would you use on the backend?
+- How would you document the API for other developers?
+
+### 6. Advanced Implementation
+**Task:** Make the application more robust and production-ready.
+
+**Areas to Consider:**
+- TypeScript implementation
+- Error boundaries
+- Testing (unit, integration, E2E)
+- Accessibility features
+- SEO optimization
+- Logging and monitoring
+- Security measures
+
+**Questions to Consider:**
+- How would you implement TypeScript in this application?
+- What testing strategy would you use?
+- How would you improve accessibility?
+- What security measures would you implement?
+- If you were to rebuild this app from scratch, what technologies would you choose and why?
+
+## Evaluation Criteria
+Your solution will be evaluated based on:
+1. Code quality and maintainability
+2. Error handling and edge cases
+3. Performance optimization
+4. Security considerations
+5. Testing implementation
+6. Documentation
+7. Best practices implementation
+
+## Getting Started
+1. Clone the repository
+2. Install dependencies using `yarn install`
+3. Start the development server using `yarn develop`
+4. Begin with the first challenge and work through them in order
+
+## Notes
+- Feel free to use any additional libraries or tools you think would be helpful
+- Explain/Document your thought process and decisions
+- Consider both immediate fixes and long-term improvements
+- Focus on writing clean, maintainable code 

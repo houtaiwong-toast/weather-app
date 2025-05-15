@@ -3,9 +3,10 @@ import PropTypes from 'prop-types';
 import { titleCase } from 'title-case';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faWind } from '@fortawesome/free-solid-svg-icons';
-import { WeatherIcon } from '~/components';
+import WMOJSON from '~/utils/json/WMO.json';
+
 import {
-  convertKelvin,
+  convertMetric,
   convertToMph,
   convertUnixTimestamp,
   degToCompass,
@@ -15,14 +16,15 @@ import {
 export const Forecast = ({ forecast, useMetric }) => {
   return (
     <section className="Forecast-wrapper">
-      {forecast.map(day => {
-        const { date } = convertUnixTimestamp(day.dt);
-        const { max, min } = day.temp;
+      {[...Array(7)].map((_, index) => {
+        const date = convertUnixTimestamp(forecast.daily.time[index]).date;
+        const max = forecast.daily.temperature_2m_max[index];
+        const min = forecast.daily.temperature_2m_min[index];
         const maxFeel = getRelativeTemp(max);
         const minFeel = getRelativeTemp(min);
-        const currentWeather = day.weather[0];
+        const currentWeather = forecast.daily.weather_code[0]
         return (
-          <dl key={day.dt} className="Forecast">
+          <dl key={index} className="Forecast">
             <dt>
               <span className="sr-only">Date:</span>
               {date}
@@ -33,22 +35,22 @@ export const Forecast = ({ forecast, useMetric }) => {
                   <dt className="sr-only">Temperature</dt>
                   <dd>
                     <span className={`Forecast-max ${maxFeel}`}>
-                      {convertKelvin(max, useMetric)}
+                      {convertMetric(max, useMetric)}
                     </span>
                     <span className={`Forecast-min ${minFeel}`}>
-                      {convertKelvin(min, useMetric)}
+                      {convertMetric(min, useMetric)}
                     </span>
                   </dd>
                 </div>
                 <div className="Forecast-weather">
                   <dt className="sr-only">Weather Conditions</dt>
                   <dd className="Forecast-iconBlock">
-                    <WeatherIcon
-                      icon={currentWeather.icon}
-                      size={2}
+                    <img
+                      src={WMOJSON[currentWeather].day.image}
+                      alt={WMOJSON[currentWeather].day.description}
                     />
                     <span>
-                      {titleCase(currentWeather.description)}
+                      {titleCase(WMOJSON[currentWeather].day.description)}
                     </span>
                   </dd>
                 </div>
@@ -57,8 +59,8 @@ export const Forecast = ({ forecast, useMetric }) => {
                   <dd className="Forecast-iconBlock">
                     <FontAwesomeIcon icon={faWind} />
                     <span>
-                      {convertToMph(day.wind_speed, useMetric)}{' '}
-                      {degToCompass(day.wind_deg, useMetric)}
+                      {convertToMph(forecast.daily.wind_speed_10m_max[index], useMetric)}{' '}
+                      {degToCompass(forecast.daily.wind_direction_10m_dominant[index], useMetric)}
                     </span>
                   </dd>
                 </div>
@@ -72,11 +74,11 @@ export const Forecast = ({ forecast, useMetric }) => {
 };
 
 Forecast.propTypes = {
-  forecast: PropTypes.array,
+  forecast: PropTypes.object,
   useMetric: PropTypes.bool,
 };
 
 Forecast.defaultProps = {
-  foreCast: [],
+  foreCast: {},
   useMetric: false,
 };

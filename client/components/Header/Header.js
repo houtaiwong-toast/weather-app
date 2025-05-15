@@ -10,6 +10,7 @@ export const Header = ({
   useMetric,
 }) => {
   const [inputText, setInputText] = useState('');
+  const [error, setError] = useState('');
 
   useEffect(() => {
     // Set the input to display the current zip code if one exists
@@ -18,13 +19,26 @@ export const Header = ({
     }
   }, [currentZip]);
 
+  const validateZipCode = (zip) => {
+    // US ZIP codes are 5 digits
+    const zipRegex = /^\d{5}$/;
+    return zipRegex.test(zip);
+  };
+
   const handleInput = e => {
     setInputText(e.target.value);
+    setError(''); // Clear error when user types
   };
+
   const handleSubmit = e => {
     e.preventDefault();
+    if (!validateZipCode(inputText)) {
+      setError('Please enter a valid 5-digit ZIP code');
+      return;
+    }
     setCurrentZip(inputText);
   };
+
   const toggleTempUnits = () => {
     setUseMetric(!useMetric);
   };
@@ -46,10 +60,12 @@ export const Header = ({
               placeholder="Search by ZIP"
               id="zip-input"
               value={inputText}
+              maxLength="5"
             />
           </div>
           <button type="submit">Search</button>
         </form>
+        {error && <div className="Header-error">{error}</div>}
         <div className="Header-tempToggleWrap">
           <button onClick={toggleTempUnits} disabled={useMetric}>
             °C
@@ -59,24 +75,7 @@ export const Header = ({
           </button>
         </div>
       </div>
-
-      <div className="Header-alerts">
-        {alerts.length > 0 &&
-          alerts.map((alert, i) => {
-            const alertParts = alert.description
-              ? alert.description.split('...')
-              : [];
-            return (
-              <Alert
-                key={`${alert.start}-${alert.end}-${i}`}
-                event={alert.event}
-                fullText={alertParts[2]}
-                sender={alert.sender_name}
-                summary={alertParts[1]}
-              />
-            );
-          })}
-      </div>
+      {alerts && alerts.length > 0 && <Alert alerts={alerts} />}
     </div>
   );
 };

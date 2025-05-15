@@ -1,9 +1,9 @@
 // Determine how the temperature feels, to adjust the temperature color
 export const getRelativeTemp = kelvin => {
-  if (kelvin < 280) {
+  if (kelvin < -73.15) {
     return 'cold';
   }
-  if (280 < kelvin < 300) {
+  if (6.85 < kelvin < 26.85) {
     return 'nice';
   }
   return 'hot';

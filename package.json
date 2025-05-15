@@ -30,6 +30,7 @@
     "gulp-concat": "^2.6.1",
     "gulp-eslint-new": "^1.4.2",
     "gulp-sass": "^5.1.0",
+    "netlify-cli": "^21.3.0",
     "netlify-lambda": "^1.6.3",
     "prop-types": "^15.8.1",
     "sass": "^1.49.9",
@@ -38,7 +39,7 @@
   },
   "scripts": {
     "build": "gulp && yarn transpile && yarn netlify-lambda build dist-server",
-    "dev": "yarn build && netlify dev",
+    "dev": "export NODE_OPTIONS=--openssl-legacy-provider && yarn build && netlify dev",
     "deploy": "yarn build && git add . && git commit -m \"New production build\" && git push",
     "transpile": "babel ./express --out-dir dist-server"
   }
