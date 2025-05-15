@@ -26,27 +26,22 @@ This technical interview will assess your ability to identify and solve real-wor
 
 **Key Areas to Focus On:**
 - Weather data fetching in `App.js`
-- IP-based location detection
-- Server-side weather API calls
-- Data fetching optimization
 
 **Questions to Consider:**
 - How would you handle multiple rapid ZIP code searches?
 - What's the best way to implement timeout mechanisms?
 - How would you implement retry logic for failed API calls?
-- What caching strategy would you use?
+- What are some data fetching optimizations you could implement?
 
 ### 3. Performance Optimization
 **Task:** Identify and fix performance issues in the application.
 
 **Key Areas to Focus On:**
-- Weather icon loading and optimization
+- Image loading and optimization
 - `WMO.json` file optimization
-- Data caching implementation
-- Loading states and skeleton screens
 
 **Questions to Consider:**
-- How would you optimize the loading of weather icons?
+- How would you optimize the loading of weather icons/images?
 - What strategies would you use to reduce layout shifts?
 - How would you implement proper caching?
 - What loading states would you add to improve user experience?
@@ -54,12 +49,6 @@ This technical interview will assess your ability to identify and solve real-wor
 
 ### 4. State Management and Data Flow
 **Task:** Improve the application's state management and data flow architecture.
-
-**Key Areas to Focus On:**
-- Current prop drilling in components
-- State management between components
-- Data flow optimization
-- State persistence
 
 **Questions to Consider:**
 - How would you refactor the current prop drilling in the application?
@@ -69,13 +58,6 @@ This technical interview will assess your ability to identify and solve real-wor
 
 ### 5. API and Backend Optimization
 **Task:** Enhance the backend architecture and API design.
-
-**Key Areas to Focus On:**
-- API rate limiting
-- API response optimization
-- Error handling middleware
-- API documentation
-- Backend caching strategy
 
 **Questions to Consider:**
 - How would you implement proper API rate limiting?
@@ -87,21 +69,14 @@ This technical interview will assess your ability to identify and solve real-wor
 ### 6. Advanced Implementation
 **Task:** Make the application more robust and production-ready.
 
-**Areas to Consider:**
-- TypeScript implementation
-- Error boundaries
-- Testing (unit, integration, E2E)
-- Accessibility features
-- SEO optimization
-- Logging and monitoring
-- Security measures
-
 **Questions to Consider:**
 - How would you implement TypeScript in this application?
 - What testing strategy would you use?
 - How would you improve accessibility?
 - What security measures would you implement?
 - If you were to rebuild this app from scratch, what technologies would you choose and why?
+- If you had a figma a design given to you, what is your process in interpreting a design?
+- What type of code standards would you implement here?
 
 ## Evaluation Criteria
 Your solution will be evaluated based on:
