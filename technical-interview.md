@@ -25,7 +25,7 @@ This technical interview will assess your ability to identify and solve real-wor
 **Task:** Improve the handling of asynchronous operations and prevent race conditions.
 
 **Key Areas to Focus On:**
-- Weather data fetching in `App.js`
+- Weather data fetching in `App.js` and `server.js`
 
 **Questions to Consider:**
 - How would you handle multiple rapid ZIP code searches?
