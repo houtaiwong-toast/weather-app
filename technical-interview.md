@@ -78,16 +78,6 @@ This technical interview will assess your ability to identify and solve real-wor
 - If you had a figma a design given to you, what is your process in interpreting a design?
 - What type of code standards would you implement here?
 
-## Evaluation Criteria
-Your solution will be evaluated based on:
-1. Code quality and maintainability
-2. Error handling and edge cases
-3. Performance optimization
-4. Security considerations
-5. Testing implementation
-6. Documentation
-7. Best practices implementation
-
 ## Getting Started
 1. Clone the repository
 2. Install dependencies using `yarn install`
