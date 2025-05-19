@@ -31,3 +31,5 @@
   * JS minification
   * Sass compiling
 * Babel
+* Node v18+
+* Yarn 1.22.1
