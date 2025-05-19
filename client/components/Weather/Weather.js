@@ -16,8 +16,6 @@ export const Weather = ({ location, useMetric, weatherData }) => {
   const { time: sunrise } = convertUnixTimestamp(weatherData.daily.sunrise[0]);
   const { time: sunset } = convertUnixTimestamp(weatherData.daily.sunset[0]);
 
-  if (!weatherData) return null;
-
   return (
     <section className="Weather">
       <h1 className="Weather-location">{location}</h1>
